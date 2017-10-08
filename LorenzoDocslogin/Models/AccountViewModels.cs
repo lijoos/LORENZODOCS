@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using LorenzoDocslogin.Models.Admin;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace LorenzoDocslogin.Models
@@ -8,6 +9,8 @@ namespace LorenzoDocslogin.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        public string HomeTown { get; set; }
+        public System.DateTime? BirthDate { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -79,6 +82,11 @@ namespace LorenzoDocslogin.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        
+        [Display(Name = "Select Team")]
+        [Required]
+        public byte? TeamId { get; set; }
+        public IEnumerable<Team> Teams { get; set; }
     }
 
     public class ResetPasswordViewModel

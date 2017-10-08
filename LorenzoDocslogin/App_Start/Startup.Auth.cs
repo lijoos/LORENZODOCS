@@ -58,11 +58,14 @@ namespace LorenzoDocslogin
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+          
+            var x=new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1058359726744-9b49sruma3ij0be1q0if7ja88qoos8ch.apps.googleusercontent.com",
+                ClientSecret = "FjKmqbhciXq6oWyPLOKGE-9j"
+            };
+            x.Scope.Add("email");
+            app.UseGoogleAuthentication(x);
         }
     }
 }

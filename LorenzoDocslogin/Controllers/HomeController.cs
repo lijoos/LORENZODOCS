@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace LorenzoDocslogin.Controllers
-{
+{ 
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()

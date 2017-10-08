@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44332</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -194,7 +194,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710080736328_InitialCreate.cs" />
+    <Compile Include="Migrations\201710080736328_InitialCreate.Designer.cs">
+      <DependentUpon>201710080736328_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710081332225_AddTeams.cs" />
+    <Compile Include="Migrations\201710081332225_AddTeams.Designer.cs">
+      <DependentUpon>201710081332225_AddTeams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710081350148_AddTeams1.cs" />
+    <Compile Include="Migrations\201710081350148_AddTeams1.Designer.cs">
+      <DependentUpon>201710081350148_AddTeams1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710081355030_populate-Teams.cs" />
+    <Compile Include="Migrations\201710081355030_populate-Teams.Designer.cs">
+      <DependentUpon>201710081355030_populate-Teams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Admin\Team.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,6 +230,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Extern\AppSettingsSecrets.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -276,6 +295,20 @@
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710080736328_InitialCreate.resx">
+      <DependentUpon>201710080736328_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710081332225_AddTeams.resx">
+      <DependentUpon>201710081332225_AddTeams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710081350148_AddTeams1.resx">
+      <DependentUpon>201710081350148_AddTeams1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710081355030_populate-Teams.resx">
+      <DependentUpon>201710081355030_populate-Teams.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -294,7 +327,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49358</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49358/</IISUrl>
+          <IISUrl>https://localhost:44332/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

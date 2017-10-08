@@ -17,15 +17,18 @@ namespace LorenzoDocslogin.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
 
         public AccountController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _context = new ApplicationDbContext();
         }
 
         public ApplicationSignInManager SignInManager
@@ -139,7 +142,10 @@ namespace LorenzoDocslogin.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            var teams = _context.Teams.ToList();
+            RegisterViewModel obj = new RegisterViewModel();
+            obj.Teams = teams.ToList();
+            return View(obj);
         }
 
         //
@@ -367,7 +373,12 @@ namespace LorenzoDocslogin.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    BirthDate =model.BirthDate,
+                    HomeTown=model.HomeTown
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -417,6 +428,10 @@ namespace LorenzoDocslogin.Controllers
                 {
                     _signInManager.Dispose();
                     _signInManager = null;
+                }
+                if(_context!=null)
+                {
+                    _context.Dispose();
                 }
             }
 
